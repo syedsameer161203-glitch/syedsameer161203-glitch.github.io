@@ -1,15 +1,5 @@
-# Syed Sameer — Portfolio V2
+# Syed Sameer — E-commerce Portfolio V4
 
-Static GitHub Pages portfolio. No build tools required.
+Updated with the new professional portrait, Visusoft performance dashboard, Ahmed Al Maghribi dashboard, and image exports from the supplied Looker Studio PDF.
 
-## Upload to GitHub Pages
-1. Open `syedsameer161203-glitch.github.io` on GitHub.
-2. Delete/replace the old `index.html`, `style.css`, and `script.js`.
-3. Upload the new `index.html`, `style.css`, `script.js`, the `assets` folder and the `docs` folder.
-4. Commit to `main`.
-5. GitHub Pages will redeploy automatically.
-
-## Before publishing
-- Add the public Looker Studio URL in the Looker Studio project section.
-- Review the dashboard image and make sure no confidential data is being exposed.
-- The raw Excel workbook is intentionally not included in the public website package. Use a sanitized screenshot or sample workbook if you want a public download.
+The Looker Studio link/section was intentionally removed. The supplied PDF is not included in the website; its pages were exported to PNG images for the Ahmed Al Maghribi analytics section.
