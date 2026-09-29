@@ -1,29 +1,13 @@
-const menuBtn = document.querySelector('.menu-btn');
-const mobileMenu = document.querySelector('.mobile-menu');
-
-menuBtn.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-});
-
-document.querySelectorAll('.mobile-menu a').forEach(link => {
-  link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-});
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12 });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-document.getElementById('year').textContent = new Date().getFullYear();
-
-const glow = document.querySelector('.cursor-glow');
-window.addEventListener('pointermove', (e) => {
-  glow.style.left = e.clientX + 'px';
-  glow.style.top = e.clientY + 'px';
-});
+const progress=document.getElementById('progressBar');
+window.addEventListener('scroll',()=>{const h=document.documentElement.scrollHeight-window.innerHeight;progress.style.width=(window.scrollY/h*100)+'%';});
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const data={
+ ahmed:{k:'01 / AHMED AL MAGHRIBI PERFUMES',t:'E-commerce Operations & Performance',b:`<p><strong>Scope:</strong> Bahrain e-commerce operations across the brand website, Talabat, Jahez and Sharaf DG.</p><ul><li>Product catalogs, listings, pricing, promotions and availability</li><li>Campaign launches, banners and marketplace visibility</li><li>Orders, cancellations, returns, stock and fulfillment coordination</li><li>Weekly and monthly reporting using Excel and Power BI</li><li>Performance dashboard covering orders, revenue, cancellation rate and platform contribution</li></ul><p><strong>Dashboard snapshot:</strong> 4,870 total orders, 4,316 completed orders, 522 cancelled orders, 11.01% cancellation rate, 96,674.05 gross order value, 64,150.84 completed revenue and 13.11 average order value.</p>`},
+ visusoft:{k:'02 / VISUSOFT',t:'Performance Dashboard & Reporting Automation',b:`<p>A structured Excel reporting system built around advertising and affiliate performance.</p><ul><li><strong>Ads Raw Data:</strong> platform, campaign, orders, spend, sales, impressions, clicks, CTR, ACoS, ROAS and week.</li><li><strong>Affiliate Raw Data:</strong> platform, affiliate, orders, sales, commission, links, link status, broken-link flag, week and month.</li><li><strong>Weekly Dashboard:</strong> ads sales, affiliate sales, growth percentages and total sales.</li><li><strong>Monthly Dashboard:</strong> month-wise ads and affiliate sales tracking.</li><li><strong>All Total KPI Dashboard:</strong> consolidated advertising KPI calculations.</li></ul><p>The portfolio shows the dashboard structure as a project preview rather than exposing the underlying workbook publicly.</p>`},
+ starkon:{k:'03 / STARKON QATAR',t:'Business Website & SEO Structure',b:`<p>Website work for Starkon Qatar, a construction and facility-management business. The project included website structure, service-page content and SEO-focused improvements.</p><p>Key service areas presented on the site include construction services, facility management, building maintenance and HVAC maintenance.</p><p><a href="https://www.starkonqa.com/" target="_blank" rel="noopener"><strong>Open the live website ↗</strong></a></p>`},
+ looker:{k:'04 / AHMED AL MAGHRIBI',t:'Looker Studio E-commerce Analysis',b:`<p>A visual analytics project focused on turning e-commerce performance data into a reporting layer that is easier to review and discuss.</p><ul><li>Performance trends and KPI views</li><li>Platform and sales analysis</li><li>Campaign and operational reporting</li><li>Decision-focused visual presentation</li></ul><p>The live Looker Studio URL can be added to this case study once the shareable link is available.</p>`}
+};
+const modal=document.getElementById('modal'), close=document.getElementById('modalClose');
+document.querySelectorAll('[data-open]').forEach(btn=>btn.addEventListener('click',()=>{const d=data[btn.dataset.open];document.getElementById('modalKicker').textContent=d.k;document.getElementById('modalTitle').textContent=d.t;document.getElementById('modalBody').innerHTML=d.b;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}));
+function hide(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''} close.addEventListener('click',hide);modal.addEventListener('click',e=>{if(e.target===modal)hide()});document.addEventListener('keydown',e=>{if(e.key==='Escape')hide()});
